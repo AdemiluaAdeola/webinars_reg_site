@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+<form action="{% url 'process_payment' registration.id %}" method="post">
+    {% csrf_token %}
+    <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ stripe_publishable_key }}"
+        data-amount="{{ registration.webinar.price|floatformat:0 }}"
+        data-name="Webinar Payment"
+        data-description="Payment for {{ registration.webinar.title }}"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-currency="usd">
+    </script>
+</form>

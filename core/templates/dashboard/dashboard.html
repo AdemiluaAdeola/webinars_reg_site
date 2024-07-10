@@ -1,0 +1,13 @@
+<!-- dashboard/templates/dashboard/staff_dashboard.html -->
+{% extends "base.html" %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+  <h2>Staff Dashboard</h2>
+  <p>Welcome, {{ user.username }}. This is the staff dashboard.</p>
+  <ul>
+    <li><a href="{% url 'dashboard_user_list' %}">User List</a></li>
+    <li><a href="{% url 'dashboard_webinar_list' %}">Webinar List</a></li>
+  </ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- dashboard/templates/dashboard/users_registered.html -->
+{% extends "base.html" %}
+
+{% block title %}Users Registered for {{ webinar.title }}{% endblock %}
+
+{% block content %}
+  <h2>Users Registered for {{ webinar.title }}</h2>
+  <ul>
+    {% for registration in registrations %}
+      <li>{{ registration.user.username }} - {{ registration.user.email }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'dashboard_webinar_list' %}">Back to Webinar List</a>
+{% endblock %}

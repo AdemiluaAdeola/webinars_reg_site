@@ -1,0 +1,23 @@
+<!-- templates/registration/login.html -->
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <h2>Login</h2>
+  <div>
+  <form method="post" action="{% url 'login' %}" class="form-container">
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" placeholder="Enter Username">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" placeholder="Enter Password"><br><br><br>
+    
+    <button type="submit">Login</button>
+  </form>
+</div>
+  <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+{% endblock %}

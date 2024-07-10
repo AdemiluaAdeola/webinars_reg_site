@@ -1,0 +1,15 @@
+<!-- dashboard/templates/dashboard/user_detail.html -->
+{% extends "base.html" %}
+
+{% block title %}User Detail{% endblock %}
+
+{% block content %}
+  <h2>User Detail</h2>
+  <p>Username: {{ user.username }}</p>
+  <p>Email: {{ user.email }}</p>
+  <a href="{% url 'dashboard_user_list' %}">Back to User List</a>
+  <form action="{% url 'dashboard_delete_user' user.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Delete User</button>
+  </form>
+{% endblock %}

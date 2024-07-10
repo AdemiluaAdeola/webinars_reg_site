@@ -1,0 +1,27 @@
+<!-- dashboard/templates/dashboard/webinar_list.html -->
+{% extends "base.html" %}
+
+{% block title %}Webinar List{% endblock %}
+
+{% block content %}
+  <h2>Webinar List</h2>
+  {% if webinars %}
+    <ul>
+      {% for webinar in webinars %}
+        <li>
+          <h3>{{ webinar.title }}</h3>
+          <p>{{ webinar.description }}</p>
+          <p><strong>Date:</strong> {{ webinar.date }}</p>
+          <p><strong>Price:</strong> ${{ webinar.price }}</p>
+          <a href="{% url 'dashboard_update_webinar' webinar.id %}">Edit</a> | 
+          <a href="{% url 'dashboard_delete_webinar' webinar.id %}">Delete</a> | 
+          <a href="{% url 'dashboard_users_registered' webinar.id %}">View Registered Users</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No webinars available at the moment. Please check back later.</p>
+  {% endif %}
+
+  <a href="{% url 'staff_dashboard' %}">Back to Dashboard</a>
+{% endblock %}
