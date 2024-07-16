@@ -4,9 +4,36 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<style>
+
+  input{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .login h3{
+      text-align: center;
+  }
+  
+  .login button{
+      width: 100%;
+      height: auto;
+      padding: 12px 20px;
+      margin: 8px 0;
+      font-size: 93%;
+  }
+
+</style>
   <h2>Login</h2>
-  <div>
-  <form method="post" action="{% url 'login' %}" class="form-container">
+  <div class="login">
+  <form method="post" action="{% url 'login' %}" class="login">
     {% for message in messages %}
     {{message}}
     {% endfor %}
