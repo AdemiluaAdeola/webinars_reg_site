@@ -1,5 +1,6 @@
 <!-- dashboard/templates/dashboard/webinar_form.html -->
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Webinar Form{% endblock %}
 
@@ -8,7 +9,7 @@
   <div class="form-container">
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit">{{ form.instance.pk|yesno:"Update,Create" }}</button>
   </form>
 </div>

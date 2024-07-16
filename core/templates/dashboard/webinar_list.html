@@ -5,6 +5,7 @@
 
 {% block content %}
   <h2>Webinar List</h2>
+  <a href="{% url 'dashboard_create_webinar' %}">Create Webinar</a>
   {% if webinars %}
     <ul>
       {% for webinar in webinars %}
