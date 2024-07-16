@@ -1,16 +1,35 @@
 {% extends "base.html" %}
 
+
+
+
 {% block content %}
-<h2>Search</h2>
+<style>
+
+    input{
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    button{
+        
+        height: auto;
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 93%;
+    }
+  
+  </style>
 <form method="get">
-    {{ form.as_p }}
+    <input type="text" name="search" placeholder="Enter Text Here To Search......">
     <button type="submit">Search</button>
 </form>
 
 <h3>Results</h3>
 <ul>
-    {% for book in results %}
-        <li>{{ book.title }} by {{ book.author }}</li>
+    {% for result in results %}
+        <li>{{ result.title }}</li>
     {% empty %}
         <li>No results found</li>
     {% endfor %}

@@ -126,13 +126,10 @@ def delete_webinar(request, webinar_id):
 
 
 def search_view(response):
-    form = SearchForm()
+    
     results = []
     if 'query' in response.GET:
-        form = SearchForm(response.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = Webinar.objects.filter(
-                Q(title__icontains=query)
-            )
-    return render(response, 'search.html', {'form': form, 'results': results})
+        query = response.POST['query']
+            
+        results = Webinar.objects.filter(Q(title__icontains=query))
+    return render(response, 'core/search.html', {'results': results})
