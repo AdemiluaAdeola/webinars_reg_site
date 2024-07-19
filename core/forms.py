@@ -5,7 +5,7 @@ from .models import Webinar, Registration
 class WebinarForm(forms.ModelForm):
     class Meta:
         model = Webinar
-        fields = ['title', 'description', 'date', 'price']
+        fields = ['title', 'description', 'image', 'date', 'link', 'price']
 
 class RegistrationForm(forms.ModelForm):
     class Meta:

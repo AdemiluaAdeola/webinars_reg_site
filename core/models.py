@@ -7,7 +7,9 @@ from django.contrib.auth.models import User
 class Webinar(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    image = models.ImageField(upload_to='webinars', blank=True, null=True)
     date = models.DateTimeField()
+    link = models.URLField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

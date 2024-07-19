@@ -4,11 +4,13 @@
 {% block title %}Webinars{% endblock %}
 
 {% block content %}
+
   <h2>Upcoming Webinars</h2>
   {% if webinars %}
     <ul>
       {% for webinar in webinars %}
         <li>
+          
           <h3>{{ webinar.title }}</h3>
           <p>{{ webinar.description }}</p>
           <p><strong>Date:</strong> {{ webinar.date }}</p>
