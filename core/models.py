@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 # webinars/models.py
@@ -31,3 +32,25 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.registration.user.username} - {self.amount}"
+    
+class Blog(models.Model):
+    title = models.CharField(max_length=200)  # Optimized for shorter text
+    description = models.TextField()  # For summaries or brief descriptions
+    content = RichTextUploadingField()  # For rich content editing
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blogs')
+    created_at = models.DateTimeField(auto_now_add=True)  # Track when the blog is created
+    updated_at = models.DateTimeField(auto_now=True)  # Track the last update
+    is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')  # Allow multiple comments per user
+    content = models.TextField()
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')  # Consistent related_name (pluralized)
+    created_at = models.DateTimeField(auto_now_add=True)  # Track when the comment is created
+
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.blog.title}"
+

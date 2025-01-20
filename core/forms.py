@@ -1,6 +1,6 @@
 # webinars/forms.py
 from django import forms
-from .models import Webinar, Registration
+from .models import *
 
 class WebinarForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,32 @@ class RegistrationForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     query = forms.CharField(label='Search', max_length=100)
+
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = [
+            'title',
+            'description',
+            'author',
+            'content',
+        ]
+
+class BlogVerificationForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = [
+            'title',
+            'description',
+            'content',
+            'author',
+            'is_verified'
+        ]
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model=Comment
+        fields = [
+            'user',
+            'content',
+        ]

@@ -15,4 +15,6 @@ urlpatterns = [
     path('dashboard/webinars/create/', create_webinar, name='dashboard_create_webinar'),
     path('dashboard/webinars/<int:webinar_id>/update/', update_webinar, name='dashboard_update_webinar'),
     path('dashboard/webinars/<int:webinar_id>/delete/', delete_webinar, name='dashboard_delete_webinar'),
+    path('blog/', blog_list, name="blog_list"),
+    path('blog/create/', create_blogpost, name="create_blog"),
 ]

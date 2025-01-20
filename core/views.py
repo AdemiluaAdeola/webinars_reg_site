@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Webinar, Registration
+from .models import *
 from .forms import *
 import stripe
 from django.conf import settings
@@ -133,3 +133,22 @@ def search_view(response):
             
         results = Webinar.objects.filter(Q(title__icontains=query))
     return render(response, 'core/search.html', {'results': results})
+
+def blog_list(response):
+    posts = Blog.objects.all()
+    return render(response, 'core/blog.html', {'posts': posts})
+
+def create_blogpost(request):
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('blog_posts')
+    else:
+        form = BlogPostForm()
+    return render(request, 'dashboard/create_blog.html', {'form': form})
+
+def delete_blogpost(request, webinar_id):
+    webinar = get_object_or_404(Webinar, id=webinar_id)
+    webinar.delete()
+    return redirect('webinar_list')

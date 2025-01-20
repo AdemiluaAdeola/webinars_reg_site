@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import Profile
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -22,3 +23,16 @@ class RegistrationForm(UserCreationForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Sign Up'))
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            "user",
+            "dob",
+            "phone_number",
+            "instagram",
+            "facebook",
+            "twitter",
+            "linkedin",
+        ]
