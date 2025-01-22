@@ -30,7 +30,7 @@ class ProfileForm(forms.ModelForm):
         fields = [
             "user",
             "dob",
-            "phone_number",
+            "phone",
             "instagram",
             "facebook",
             "twitter",
